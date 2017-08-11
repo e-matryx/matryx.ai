@@ -4,7 +4,7 @@
   <header>
     <router-link to="/">Home</router-link>
     <router-link to="/tokensale">Token Sale</router-link>
-    <router-link to="/faq">FAQ</router-link>
+    <router-link to="/faq/about">FAQ</router-link>
   </header>
 
   <router-view></router-view>
@@ -22,6 +22,7 @@ export default {
 
 <style lang="scss">
 @import './assets/css/styles';
+@import './assets/css/faq';
 body {
     margin: 0 auto;
 }

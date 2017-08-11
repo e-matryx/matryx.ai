@@ -1,28 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HOME from '@/views/Home'
-import FAQ from '@/views/FAQ'
-import TOKENSALE from '@/views/TOKENSALE'
+import Home from '@/views/Home/index'
+import FAQ from '@/views/FAQ/index'
+import TokenSale from '@/views/TokenSale/index'
+
+// import Accordion from '@/views/FAQ/Accordion'
+import About from '@/views/FAQ/Accordions/About'
+import Question from '@/views/FAQ/Accordion-Question'
 
 Vue.use(Router)
 
 export default new Router({
-
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HOME',
-      component: HOME
+      name: 'home',
+      component: Home
     },
     {
-      path: '/faq',
-      name: 'FAQ',
-      component: FAQ
+      path: '/faq/:accordion',
+      // no worky
+      // redirect: '/faq/about/who-is-matryx',
+      component: FAQ,
+      children: [
+        {
+          path: '/:question',
+          component: About,
+          children: [
+            {
+              path: '',
+              component: Question
+            }
+          ]
+        }
+      ]
     },
     {
       path: '/tokensale',
-      name: 'TOKENSALE',
-      component: TOKENSALE
+      name: 'TokenSale',
+      component: TokenSale
     }
   ]
 })
